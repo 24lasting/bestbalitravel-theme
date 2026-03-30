@@ -1,0 +1,241 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Footer Styles
+*/
+
+/* ========================================
+   Footer Base
+   ======================================== */
+.site-footer {
+    background: var(--bbt-gray-900);
+    color: var(--bbt-gray-300);
+}
+
+/* ========================================
+   Footer Main
+   ======================================== */
+.footer-main {
+    padding: var(--bbt-space-16) 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: var(--bbt-space-10);
+}
+
+/* Footer About */
+.footer-about .footer-logo {
+    margin-bottom: var(--bbt-space-4);
+}
+
+.footer-about .footer-logo img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-about .site-logo-text {
+    font-size: var(--bbt-text-xl);
+}
+
+.footer-about .site-logo-text .logo-travel {
+    color: var(--bbt-gray-400);
+}
+
+.footer-description {
+    margin-bottom: var(--bbt-space-6);
+    line-height: 1.7;
+    color: var(--bbt-gray-400);
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: var(--bbt-space-3);
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bbt-gray-800);
+    color: var(--bbt-gray-400);
+    border-radius: var(--bbt-radius-full);
+    transition: all var(--bbt-transition-fast);
+}
+
+.footer-social a:hover {
+    background: var(--bbt-primary);
+    color: var(--bbt-white);
+    transform: translateY(-2px);
+}
+
+/* Footer Column */
+.footer-col {
+    display: block;
+}
+
+.footer-title {
+    font-size: var(--bbt-text-lg);
+    font-weight: 600;
+    color: var(--bbt-white);
+    margin-bottom: var(--bbt-space-6);
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bbt-space-3);
+}
+
+.footer-links a {
+    color: var(--bbt-gray-400);
+    transition: all var(--bbt-transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--bbt-primary);
+    padding-left: var(--bbt-space-2);
+}
+
+/* Footer Contact */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bbt-space-4);
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bbt-space-3);
+}
+
+.footer-contact li svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--bbt-primary);
+}
+
+.footer-contact a {
+    color: var(--bbt-gray-400);
+    transition: color var(--bbt-transition-fast);
+}
+
+.footer-contact a:hover {
+    color: var(--bbt-primary);
+}
+
+/* Payment Methods */
+.footer-payments {
+    margin-top: var(--bbt-space-8);
+}
+
+.footer-payments h5 {
+    font-size: var(--bbt-text-sm);
+    font-weight: 500;
+    color: var(--bbt-gray-500);
+    margin-bottom: var(--bbt-space-3);
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--bbt-space-2);
+}
+
+.payment-icons img {
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity var(--bbt-transition-fast);
+}
+
+.payment-icons img:hover {
+    opacity: 1;
+}
+
+/* ========================================
+   Footer Bottom
+   ======================================== */
+.footer-bottom {
+    padding: var(--bbt-space-6) 0;
+    border-top: 1px solid var(--bbt-gray-800);
+}
+
+.footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--bbt-space-4);
+}
+
+.copyright {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+}
+
+.footer-legal {
+    display: flex;
+    gap: var(--bbt-space-6);
+}
+
+.footer-legal a {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+    transition: color var(--bbt-transition-fast);
+}
+
+.footer-legal a:hover {
+    color: var(--bbt-primary);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--bbt-space-8);
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-main {
+        padding: var(--bbt-space-10) 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--bbt-space-8);
+    }
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-legal {
+        justify-content: center;
+    }
+}

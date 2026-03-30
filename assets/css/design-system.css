@@ -1,0 +1,646 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Premium Design System
+*/
+
+/* ========================================
+   TYPOGRAPHY - Premium Font Imports
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ========================================
+   CSS CUSTOM PROPERTIES - Design Tokens
+   ======================================== */
+:root {
+    /* === Primary Colors - Deep Ocean === */
+    --bbt-navy-900: #0A1628;
+    --bbt-navy-800: #1A2F4D;
+    --bbt-navy-700: #2A4A6B;
+    --bbt-navy-600: #3A6589;
+    --bbt-navy-500: #4A80A7;
+
+    /* === Accent Colors - Sunset Gold === */
+    --bbt-gold-600: #D48B1F;
+    --bbt-gold-500: #F5A623;
+    --bbt-gold-400: #FFB84D;
+    --bbt-gold-300: #FFCF80;
+
+    /* === Secondary - Coral & Rose === */
+    --bbt-coral-500: #FF6B6B;
+    --bbt-coral-400: #FF8A8A;
+    --bbt-rose-500: #FF6B9D;
+
+    /* === Tropical Greens === */
+    --bbt-emerald-600: #059669;
+    --bbt-emerald-500: #10B981;
+    --bbt-emerald-400: #34D399;
+    --bbt-teal-500: #14B8A6;
+    --bbt-teal-400: #2DD4BF;
+
+    /* === Ocean Blues === */
+    --bbt-sky-500: #0EA5E9;
+    --bbt-sky-400: #38BDF8;
+    --bbt-aqua-500: #00D4FF;
+
+    /* === Neutrals === */
+    --bbt-white: #FFFFFF;
+    --bbt-cream: #FFF8F0;
+    --bbt-gray-50: #F9FAFB;
+    --bbt-gray-100: #F3F4F6;
+    --bbt-gray-200: #E5E7EB;
+    --bbt-gray-300: #D1D5DB;
+    --bbt-gray-400: #9CA3AF;
+    --bbt-gray-500: #6B7280;
+    --bbt-gray-600: #4B5563;
+    --bbt-gray-700: #374151;
+    --bbt-gray-800: #1F2937;
+    --bbt-gray-900: #111827;
+    --bbt-black: #0A0A0A;
+
+    /* === Premium Gradients === */
+    --bbt-gradient-sunset: linear-gradient(135deg, #FF6B6B 0%, #F5A623 50%, #FFD93D 100%);
+    --bbt-gradient-ocean: linear-gradient(135deg, #0A1628 0%, #1E3A5F 50%, #2A6B8A 100%);
+    --bbt-gradient-tropical: linear-gradient(135deg, #10B981 0%, #14B8A6 50%, #0EA5E9 100%);
+    --bbt-gradient-gold: linear-gradient(135deg, #F5A623 0%, #FFD93D 100%);
+    --bbt-gradient-luxury: linear-gradient(135deg, #1A1A2E 0%, #2D2D4D 50%, #F5A623 100%);
+    --bbt-gradient-hero: linear-gradient(180deg, rgba(10, 22, 40, 0) 0%, rgba(10, 22, 40, 0.8) 100%);
+
+    /* === Glass Morphism === */
+    --bbt-glass-bg: rgba(255, 255, 255, 0.08);
+    --bbt-glass-bg-light: rgba(255, 255, 255, 0.85);
+    --bbt-glass-border: rgba(255, 255, 255, 0.15);
+    --bbt-glass-border-light: rgba(0, 0, 0, 0.05);
+    --bbt-glass-blur: blur(20px);
+    --bbt-glass-blur-strong: blur(40px);
+
+    /* === Typography === */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Outfit', system-ui, sans-serif;
+
+    /* === Font Sizes (Fluid) === */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.85rem);
+    --text-sm: clamp(0.85rem, 0.8rem + 0.25vw, 0.95rem);
+    --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+    --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+    --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+    --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
+    --text-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 6rem);
+
+    /* === Spacing === */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    /* === Border Radius === */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+    --radius-full: 9999px;
+
+    /* === Shadows === */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-gold: 0 10px 40px -10px rgba(245, 166, 35, 0.4);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    /* === Transitions === */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* === Z-Index === */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--bbt-gray-700);
+    background-color: var(--bbt-white);
+}
+
+/* ========================================
+   TYPOGRAPHY STYLES
+   ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--bbt-navy-900);
+    margin-bottom: var(--space-4);
+}
+
+h1 {
+    font-size: var(--text-5xl);
+}
+
+h2 {
+    font-size: var(--text-4xl);
+}
+
+h3 {
+    font-size: var(--text-3xl);
+}
+
+h4 {
+    font-size: var(--text-2xl);
+}
+
+h5 {
+    font-size: var(--text-xl);
+}
+
+h6 {
+    font-size: var(--text-lg);
+}
+
+/* Display headings - Elegant Serif */
+.bbt-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.bbt-display-1 {
+    font-size: var(--text-6xl);
+}
+
+.bbt-display-2 {
+    font-size: var(--text-5xl);
+}
+
+.bbt-display-3 {
+    font-size: var(--text-4xl);
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+.bbt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.bbt-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+}
+
+.bbt-btn:hover::before {
+    left: 100%;
+}
+
+/* Primary Button */
+.bbt-btn-primary {
+    background: var(--bbt-gradient-gold);
+    color: var(--bbt-navy-900);
+    box-shadow: var(--shadow-gold);
+}
+
+.bbt-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px -10px rgba(245, 166, 35, 0.5);
+}
+
+/* Secondary Button */
+.bbt-btn-secondary {
+    background: var(--bbt-navy-800);
+    color: var(--bbt-white);
+}
+
+.bbt-btn-secondary:hover {
+    background: var(--bbt-navy-700);
+    transform: translateY(-2px);
+}
+
+/* Outline Button */
+.bbt-btn-outline {
+    background: transparent;
+    border-color: var(--bbt-gold-500);
+    color: var(--bbt-gold-500);
+}
+
+.bbt-btn-outline:hover {
+    background: var(--bbt-gold-500);
+    color: var(--bbt-navy-900);
+}
+
+/* Ghost Button */
+.bbt-btn-ghost {
+    background: var(--bbt-glass-bg);
+    backdrop-filter: var(--bbt-glass-blur);
+    border-color: var(--bbt-glass-border);
+    color: var(--bbt-white);
+}
+
+.bbt-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Button Sizes */
+.bbt-btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+}
+
+.bbt-btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+}
+
+.bbt-btn-xl {
+    padding: var(--space-5) var(--space-10);
+    font-size: var(--text-lg);
+}
+
+/* ========================================
+   CARD STYLES
+   ======================================== */
+.bbt-card {
+    background: var(--bbt-white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
+}
+
+.bbt-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-8px);
+}
+
+/* Glass Card */
+.bbt-card-glass {
+    background: var(--bbt-glass-bg-light);
+    backdrop-filter: var(--bbt-glass-blur);
+    border: 1px solid var(--bbt-glass-border-light);
+}
+
+/* 3D Tilt Effect */
+.bbt-hover-3d-tilt {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.bbt-hover-3d-tilt:hover {
+    transform: rotateY(-5deg) rotateX(5deg) translateY(-5px);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+/* Fade In */
+@keyframes bbt-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Fade Up */
+@keyframes bbt-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale In */
+@keyframes bbt-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Slide In Right */
+@keyframes bbt-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Float */
+@keyframes bbt-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Pulse */
+@keyframes bbt-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(245, 166, 35, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+    }
+}
+
+/* Ken Burns */
+@keyframes bbt-ken-burns {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Shimmer */
+@keyframes bbt-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Animation Classes */
+.bbt-anim-fade {
+    animation: bbt-fade-in 0.6s ease forwards;
+}
+
+.bbt-anim-fade-up {
+    animation: bbt-fade-up 0.6s ease forwards;
+}
+
+.bbt-anim-scale-in {
+    animation: bbt-scale-in 0.6s ease forwards;
+}
+
+.bbt-anim-slide-right {
+    animation: bbt-slide-in-right 0.6s ease forwards;
+}
+
+.bbt-float {
+    animation: bbt-float 3s ease-in-out infinite;
+}
+
+.bbt-pulse {
+    animation: bbt-pulse 2s infinite;
+}
+
+/* Stagger Children */
+.bbt-stagger>* {
+    opacity: 0;
+    animation: bbt-fade-up 0.6s ease forwards;
+}
+
+.bbt-stagger>*:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.bbt-stagger>*:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+.bbt-stagger>*:nth-child(3) {
+    animation-delay: 200ms;
+}
+
+.bbt-stagger>*:nth-child(4) {
+    animation-delay: 300ms;
+}
+
+.bbt-stagger>*:nth-child(5) {
+    animation-delay: 400ms;
+}
+
+.bbt-stagger>*:nth-child(6) {
+    animation-delay: 500ms;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+/* Glass Effect */
+.bbt-glass {
+    background: var(--bbt-glass-bg);
+    backdrop-filter: var(--bbt-glass-blur);
+    border: 1px solid var(--bbt-glass-border);
+}
+
+/* Gradient Text */
+.bbt-gradient-text {
+    background: var(--bbt-gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gold Accent */
+.bbt-gold {
+    color: var(--bbt-gold-500);
+}
+
+.bbt-bg-gold {
+    background-color: var(--bbt-gold-500);
+}
+
+/* Container */
+.bbt-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .bbt-container {
+        padding: 0 var(--space-4);
+    }
+}
+
+/* Section Padding */
+.bbt-section {
+    padding: var(--space-24) 0;
+}
+
+.bbt-section-sm {
+    padding: var(--space-16) 0;
+}
+
+.bbt-section-lg {
+    padding: var(--space-32) 0;
+}
+
+/* ========================================
+   WHATSAPP FLOATING BUTTON
+   ======================================== */
+.bbt-whatsapp-floating {
+    position: fixed;
+    z-index: var(--z-fixed);
+}
+
+.bbt-whatsapp-floating.bottom-right {
+    right: var(--space-6);
+    bottom: var(--space-6);
+}
+
+.bbt-whatsapp-floating.bottom-left {
+    left: var(--space-6);
+    bottom: var(--space-6);
+}
+
+.bbt-wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all var(--transition-base);
+}
+
+.bbt-wa-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+}
+
+.bbt-wa-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bbt-navy-900);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.bbt-whatsapp-floating:hover .bbt-wa-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bbt-whatsapp-floating.bbt-pulse .bbt-wa-btn {
+    animation: bbt-pulse 2s infinite;
+}

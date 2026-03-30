@@ -1,0 +1,621 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0     
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Ocean Breeze Demo
+*/
+
+/* ========================================
+   CSS CUSTOM PROPERTIES - OCEAN PALETTE
+   ======================================== */
+:root {
+    /* Ocean Colors */
+    --ob-primary: #0ea5e9;
+    --ob-secondary: #06b6d4;
+    --ob-accent: #22d3ee;
+    --ob-deep: #0c4a6e;
+    --ob-dark: #0f172a;
+    --ob-light: #f0f9ff;
+    --ob-coral: #f472b6;
+    --ob-sand: #fef3c7;
+
+    /* Gradients */
+    --ob-gradient-ocean: linear-gradient(180deg, #0ea5e9 0%, #06b6d4 30%, #22d3ee 60%, #a5f3fc 100%);
+    --ob-gradient-deep: linear-gradient(180deg, #0f172a 0%, #0c4a6e 50%, #0ea5e9 100%);
+    --ob-gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    --ob-gradient-shimmer: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+
+    /* Glass Effect */
+    --ob-glass-bg: rgba(255, 255, 255, 0.1);
+    --ob-glass-border: rgba(255, 255, 255, 0.2);
+    --ob-glass-blur: blur(25px);
+
+    /* Shadows */
+    --ob-shadow-ocean: 0 25px 80px rgba(14, 165, 233, 0.3);
+    --ob-shadow-float: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+    --ob-shadow-glow: 0 0 60px rgba(34, 211, 238, 0.4);
+}
+
+/* ========================================
+   ANIMATED OCEAN WAVES
+   ======================================== */
+.ocean-bg {
+    position: relative;
+    background: var(--ob-gradient-ocean);
+    overflow: hidden;
+}
+
+/* Wave Animation */
+.ocean-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    pointer-events: none;
+}
+
+.ocean-waves::before,
+.ocean-waves::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200px;
+    bottom: 0;
+    left: -50%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='rgba(255,255,255,0.3)' d='M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,69.3C960,85,1056,107,1152,101.3C1248,96,1344,64,1392,48L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    animation: waveMotion 12s ease-in-out infinite;
+}
+
+.ocean-waves::after {
+    opacity: 0.5;
+    animation: waveMotion 8s ease-in-out infinite reverse;
+    animation-delay: -4s;
+}
+
+@keyframes waveMotion {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+
+    50% {
+        transform: translateX(-10px) translateY(5px);
+    }
+
+    75% {
+        transform: translateX(5px) translateY(-3px);
+    }
+}
+
+/* Bubble particles */
+.ocean-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ocean-bubbles span {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: bubbleRise 15s infinite;
+}
+
+.ocean-bubbles span:nth-child(1) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.ocean-bubbles span:nth-child(2) {
+    left: 30%;
+    width: 15px;
+    height: 15px;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.ocean-bubbles span:nth-child(3) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 14s;
+    animation-delay: 4s;
+}
+
+.ocean-bubbles span:nth-child(4) {
+    left: 70%;
+    width: 18px;
+    height: 18px;
+    animation-duration: 11s;
+    animation-delay: 1s;
+}
+
+.ocean-bubbles span:nth-child(5) {
+    left: 90%;
+    width: 22px;
+    height: 22px;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+@keyframes bubbleRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   HERO SECTION - UNDERWATER EFFECT
+   ======================================== */
+.demo-ocean .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--ob-gradient-deep);
+    overflow: hidden;
+}
+
+/* Light rays effect */
+.demo-ocean .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.2) 0%, transparent 70%);
+    clip-path: polygon(30% 0, 70% 0, 85% 100%, 15% 100%);
+    animation: lightRays 8s ease-in-out infinite;
+}
+
+@keyframes lightRays {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scaleX(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scaleX(1.1);
+    }
+}
+
+.demo-ocean .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+}
+
+.demo-ocean .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    animation: floatUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+@keyframes floatUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.demo-ocean .hero-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--ob-accent);
+    margin-top: 1.5rem;
+    animation: floatUp 1s 0.3s ease-out forwards;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* ========================================
+   GLASSMORPHISM CARDS
+   ======================================== */
+.demo-ocean .glass-card {
+    background: var(--ob-glass-bg);
+    backdrop-filter: var(--ob-glass-blur);
+    -webkit-backdrop-filter: var(--ob-glass-blur);
+    border: 1px solid var(--ob-glass-border);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.demo-ocean .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--ob-gradient-shimmer);
+    transition: left 0.6s;
+}
+
+.demo-ocean .glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--ob-shadow-glow);
+    border-color: var(--ob-accent);
+}
+
+.demo-ocean .glass-card:hover::before {
+    left: 100%;
+}
+
+/* ========================================
+   TOUR CARDS - FLOATING EFFECT
+   ======================================== */
+.demo-ocean .tour-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: white;
+    box-shadow: var(--ob-shadow-float);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.demo-ocean .tour-card:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.demo-ocean .tour-card:nth-child(3) {
+    animation-delay: -2s;
+}
+
+.demo-ocean .tour-card:nth-child(4) {
+    animation-delay: -3s;
+}
+
+.demo-ocean .tour-card:hover {
+    animation-play-state: paused;
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--ob-shadow-ocean);
+}
+
+.demo-ocean .tour-card-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.demo-ocean .tour-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: brightness(1);
+}
+
+.demo-ocean .tour-card:hover .tour-card-image img {
+    transform: scale(1.1);
+    filter: brightness(1.1) saturate(1.1);
+}
+
+/* Ocean shimmer overlay */
+.demo-ocean .tour-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(14, 165, 233, 0) 0%,
+            rgba(14, 165, 233, 0.1) 50%,
+            rgba(6, 182, 212, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.demo-ocean .tour-card:hover .tour-card-image::after {
+    opacity: 1;
+}
+
+/* Floating price badge */
+.demo-ocean .tour-price {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--ob-primary);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+    animation: pricePulse 3s ease-in-out infinite;
+}
+
+@keyframes pricePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 8px 35px rgba(14, 165, 233, 0.4);
+    }
+}
+
+.demo-ocean .tour-card-content {
+    padding: 1.5rem;
+    background: white;
+}
+
+.demo-ocean .tour-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ob-deep);
+}
+
+.demo-ocean .tour-card-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--ob-primary);
+    margin-top: 0.5rem;
+}
+
+/* ========================================
+   WATER RIPPLE BUTTON
+   ======================================== */
+.demo-ocean .ripple-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 2.5rem;
+    background: var(--ob-gradient-ocean);
+    background-size: 200% auto;
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.demo-ocean .ripple-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.demo-ocean .ripple-btn:hover {
+    background-position: right center;
+    box-shadow: var(--ob-shadow-ocean);
+    transform: translateY(-3px);
+}
+
+.demo-ocean .ripple-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
+.demo-ocean .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.demo-ocean .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--ob-deep);
+    position: relative;
+    display: inline-block;
+}
+
+.demo-ocean .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--ob-gradient-ocean);
+    border-radius: 2px;
+}
+
+/* Wave underline animation */
+.demo-ocean .wave-underline::after {
+    animation: waveUnderline 2s ease-in-out infinite;
+}
+
+@keyframes waveUnderline {
+
+    0%,
+    100% {
+        width: 60px;
+    }
+
+    50% {
+        width: 100px;
+    }
+}
+
+/* ========================================
+   BOOKING WIDGET - GLASS STYLE
+   ======================================== */
+.demo-ocean .booking-widget {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    box-shadow: 0 25px 60px rgba(14, 165, 233, 0.15);
+}
+
+.demo-ocean .booking-price-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: var(--ob-gradient-ocean);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.demo-ocean .booking-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--ob-gradient-ocean);
+    background-size: 200% auto;
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.demo-ocean .booking-btn:hover {
+    background-position: right center;
+    box-shadow: var(--ob-shadow-ocean);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   STATS COUNTER - ANIMATED
+   ======================================== */
+.demo-ocean .stats-section {
+    background: var(--ob-gradient-deep);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-ocean .stat-item {
+    text-align: center;
+    color: white;
+}
+
+.demo-ocean .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--ob-accent);
+    line-height: 1;
+}
+
+.demo-ocean .stat-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.5rem;
+}
+
+/* ========================================
+   CURRENCY/LANGUAGE SWITCHER
+   ======================================== */
+.demo-ocean .switcher-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--ob-glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--ob-glass-border);
+    border-radius: 50px;
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.demo-ocean .switcher-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    .demo-ocean .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .demo-ocean .glass-card {
+        padding: 1.5rem;
+    }
+
+    .demo-ocean .stat-number {
+        font-size: 3rem;
+    }
+}

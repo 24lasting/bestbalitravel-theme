@@ -1,0 +1,530 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Checkout & Booking Styles
+*/
+
+/* ========================================
+   Floating Checkout Bar
+   ======================================== */
+.floating-checkout {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #ffffff, #fafafa);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12);
+    padding: 12px 0;
+}
+
+/* Hide on mobile when bottom nav is visible */
+@media (max-width: 768px) {
+    .floating-checkout {
+        bottom: 60px;
+        border-radius: 16px 16px 0 0;
+    }
+}
+
+.floating-checkout-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.checkout-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.checkout-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.checkout-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.checkout-price {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.checkout-price .price-label {
+    display: block;
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+}
+
+.checkout-price .price-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f5a623;
+}
+
+.checkout-price .price-per {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.checkout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #f5a623, #e69316);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+}
+
+.checkout-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .floating-checkout-inner {
+        flex-wrap: wrap;
+    }
+
+    .checkout-info {
+        flex: 1 1 100%;
+        margin-bottom: 8px;
+    }
+
+    .checkout-price {
+        text-align: left;
+    }
+
+    .checkout-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   Booking Modal
+   ======================================== */
+.booking-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.booking-modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 50%;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.modal-header .tour-name {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.booking-form {
+    padding: 24px;
+}
+
+.form-step {
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    background: #f9fafb;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: white;
+    border-color: #f5a623;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Persons Selector */
+.persons-selector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #f9fafb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.persons-selector button {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.persons-selector button:hover:not(:disabled) {
+    background: #f5a623;
+    color: white;
+}
+
+.persons-selector button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.persons-selector span {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Price Summary */
+.price-summary {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.price-row.total {
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 1px dashed #e5e7eb;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.price-row.total span:last-child {
+    color: #f5a623;
+}
+
+/* Form Buttons */
+.btn-next,
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #f5a623, #e69316);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-next:hover:not(:disabled),
+.btn-submit:hover:not(:disabled) {
+    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-next:disabled,
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-back {
+    flex: 0 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #f3f4f6;
+    color: #374151;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-back:hover {
+    background: #e5e7eb;
+}
+
+.form-buttons .btn-submit {
+    flex: 1;
+}
+
+/* Success Step */
+.success-step {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.success-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-step h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.success-step p {
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.booking-id {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 24px;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* ========================================
+   Mobile Optimizations
+   ======================================== */
+@media (max-width: 480px) {
+    .booking-modal {
+        border-radius: 20px 20px 0 0;
+        max-height: 85vh;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .booking-form {
+        padding: 20px;
+    }
+
+    .checkout-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   Alpine.js Transitions
+   ======================================== */
+[x-cloak] {
+    display: none !important;
+}
+
+.translate-y-full {
+    transform: translateY(100%);
+}
+
+.translate-y-0 {
+    transform: translateY(0);
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+.scale-95 {
+    transform: scale(0.95);
+}
+
+.scale-100 {
+    transform: scale(1);
+}
+
+.transition {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.duration-200 {
+    transition-duration: 200ms;
+}
+
+.duration-300 {
+    transition-duration: 300ms;
+}

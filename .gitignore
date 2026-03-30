@@ -1,0 +1,24 @@
+# WordPress Theme Gitignore
+
+# Browsersync / Build tools
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Project specifics
+documentation/
+.snapshots/
+*.zip
+*.tar.gz

@@ -1,0 +1,534 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Mega Navigation Styles
+*/
+
+/* ========================================
+   MEGA MENU CONTAINER
+   ======================================== */
+.mega-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.mega-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide on mobile */
+@media (max-width: 1024px) {
+    .mega-nav {
+        display: none;
+    }
+}
+
+/* ========================================
+   NAV ITEM WITH DROPDOWN
+   ======================================== */
+.mega-nav-item {
+    position: relative;
+}
+
+.mega-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.mega-nav-link:hover {
+    color: #f5a623;
+    background: rgba(245, 166, 35, 0.08);
+}
+
+.mega-nav-link.active {
+    color: #f5a623;
+    background: rgba(245, 166, 35, 0.1);
+}
+
+/* Dropdown Arrow */
+.mega-nav-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s;
+}
+
+.mega-nav-item:hover .mega-nav-arrow,
+.mega-nav-item[data-open="true"] .mega-nav-arrow {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   MEGA DROPDOWN PANEL
+   ======================================== */
+.mega-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 600px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.mega-nav-item:hover .mega-dropdown,
+.mega-nav-item[data-open="true"] .mega-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Arrow pointer */
+.mega-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 4px 0 0 0;
+}
+
+/* ========================================
+   MEGA DROPDOWN LAYOUTS
+   ======================================== */
+/* Grid Layout */
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Wide dropdown for Tours */
+.mega-dropdown.mega-dropdown-wide {
+    min-width: 800px;
+}
+
+.mega-dropdown.mega-dropdown-wide .mega-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ========================================
+   MEGA MENU CATEGORIES
+   ======================================== */
+.mega-category {
+    padding: 16px;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.mega-category:hover {
+    background: rgba(245, 166, 35, 0.05);
+}
+
+.mega-category-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 12px;
+    font-size: 24px;
+    transition: all 0.3s;
+}
+
+.mega-category:hover .mega-category-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.25);
+}
+
+.mega-category-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.mega-category-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.mega-category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* ========================================
+   MEGA FEATURED ITEM
+   ======================================== */
+.mega-featured {
+    position: relative;
+    grid-column: span 2;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 200px;
+}
+
+.mega-featured-image {
+    position: absolute;
+    inset: 0;
+}
+
+.mega-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.mega-featured:hover .mega-featured-image img {
+    transform: scale(1.05);
+}
+
+.mega-featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+}
+
+.mega-featured-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: white;
+}
+
+.mega-featured-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f5a623;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.mega-featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.mega-featured-price {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ========================================
+   MEGA LINKS LIST
+   ======================================== */
+.mega-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mega-links-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+}
+
+.mega-links li {
+    margin-bottom: 8px;
+}
+
+.mega-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin: 0 -12px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.mega-links a:hover {
+    background: rgba(245, 166, 35, 0.08);
+    color: #f5a623;
+    transform: translateX(4px);
+}
+
+.mega-links a svg {
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    transition: color 0.2s;
+}
+
+.mega-links a:hover svg {
+    color: #f5a623;
+}
+
+/* ========================================
+   MEGA FOOTER (CTA)
+   ======================================== */
+.mega-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mega-footer-text {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.mega-footer-text strong {
+    color: #111827;
+}
+
+.mega-footer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f5a623, #e69316);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.mega-footer-btn:hover {
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.35);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   SIMPLE DROPDOWN (Non-mega)
+   ======================================== */
+.simple-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    padding: 8px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s;
+    z-index: 1000;
+}
+
+.mega-nav-item:hover .simple-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.simple-dropdown a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.simple-dropdown a:hover {
+    background: rgba(245, 166, 35, 0.1);
+    color: #f5a623;
+}
+
+/* ========================================
+   HEADER SCROLLED STATE
+   ======================================== */
+.site-header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.site-header.scrolled .header-wrapper {
+    padding: 8px 0;
+}
+
+/* ========================================
+   ANIMATED UNDERLINE
+   ======================================== */
+.nav-link-underline {
+    position: relative;
+}
+
+.nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: #f5a623;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ========================================
+   MOBILE MEGA MENU (Slide Panel)
+   ======================================== */
+@media (max-width: 1024px) {
+    .mobile-mega-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 380px;
+        background: white;
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .mobile-mega-panel.active {
+        transform: translateX(0);
+    }
+
+    .mobile-mega-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .mobile-mega-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 0;
+    }
+
+    .mobile-mega-item {
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .mobile-mega-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        font-size: 15px;
+        font-weight: 500;
+        color: #111827;
+        text-decoration: none;
+    }
+
+    .mobile-mega-submenu {
+        display: none;
+        padding: 0 20px 16px;
+    }
+
+    .mobile-mega-item.open .mobile-mega-submenu {
+        display: block;
+    }
+
+    .mobile-mega-submenu a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+        font-size: 14px;
+        color: #6b7280;
+        text-decoration: none;
+        border-bottom: 1px solid #f9fafb;
+    }
+
+    .mobile-mega-submenu a:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-mega-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        z-index: 1999;
+    }
+
+    .mobile-mega-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}

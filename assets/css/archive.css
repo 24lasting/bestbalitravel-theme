@@ -1,0 +1,304 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Archive & Filter Styles
+*/
+
+/* ========================================
+   Archive Layout
+   ======================================== */
+.bbt-archive-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--bbt-space-8);
+}
+
+@media (max-width: 1024px) {
+    .bbt-archive-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Filters Sidebar
+   ======================================== */
+.bbt-filters-sidebar {
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-xl);
+    box-shadow: var(--bbt-shadow-sm);
+    padding: var(--bbt-space-5);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.bbt-filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--bbt-space-5);
+    padding-bottom: var(--bbt-space-4);
+    border-bottom: 1px solid var(--bbt-gray-200);
+}
+
+.bbt-filters-header h3 {
+    margin: 0;
+    font-size: var(--bbt-text-lg);
+}
+
+.bbt-filters-clear {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bbt-filters-clear:hover {
+    text-decoration: underline;
+}
+
+.bbt-filter-group {
+    margin-bottom: var(--bbt-space-5);
+}
+
+.bbt-filter-title {
+    font-size: var(--bbt-text-base);
+    font-weight: 600;
+    margin-bottom: var(--bbt-space-3);
+}
+
+.bbt-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bbt-space-2);
+}
+
+.bbt-filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-2);
+    cursor: pointer;
+    font-size: var(--bbt-text-sm);
+}
+
+.bbt-filter-checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--bbt-primary);
+    cursor: pointer;
+}
+
+.bbt-filter-checkbox .count {
+    color: var(--bbt-gray-400);
+    margin-left: auto;
+}
+
+.bbt-price-range {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-2);
+}
+
+.bbt-price-range input {
+    flex: 1;
+    padding: var(--bbt-space-2);
+    font-size: var(--bbt-text-sm);
+}
+
+.bbt-price-range span {
+    color: var(--bbt-gray-400);
+}
+
+/* Mobile Filters */
+@media (max-width: 1024px) {
+    .bbt-filters-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 320px;
+        max-width: 100%;
+        z-index: 1100;
+        transform: translateX(-100%);
+        transition: transform var(--bbt-transition-normal);
+        overflow-y: auto;
+        border-radius: 0;
+    }
+
+    .bbt-filters-sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+.bbt-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-2);
+    padding: var(--bbt-space-3) var(--bbt-space-4);
+    font-weight: 500;
+    background: var(--bbt-white);
+    border: 1px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-md);
+    cursor: pointer;
+    margin-bottom: var(--bbt-space-4);
+}
+
+/* ========================================
+   Tours Toolbar
+   ======================================== */
+.bbt-tours-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--bbt-space-4);
+    padding: var(--bbt-space-4);
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-lg);
+    margin-bottom: var(--bbt-space-6);
+}
+
+.bbt-tours-count {
+    font-weight: 500;
+    color: var(--bbt-gray-700);
+}
+
+.bbt-tours-sort {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-2);
+}
+
+.bbt-tours-sort label {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+}
+
+.bbt-tours-sort select {
+    padding: var(--bbt-space-2) var(--bbt-space-3);
+    border: 1px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-md);
+    background: var(--bbt-white);
+}
+
+.bbt-tours-view {
+    display: flex;
+    gap: var(--bbt-space-1);
+}
+
+.bbt-view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--bbt-gray-400);
+    background: var(--bbt-gray-100);
+    border: none;
+    border-radius: var(--bbt-radius-md);
+    cursor: pointer;
+    transition: all var(--bbt-transition-fast);
+}
+
+.bbt-view-btn:hover,
+.bbt-view-btn.active {
+    color: var(--bbt-primary);
+    background: rgba(245, 166, 35, 0.1);
+}
+
+/* ========================================
+   Pagination
+   ======================================== */
+.bbt-pagination {
+    margin-top: var(--bbt-space-10);
+}
+
+.bbt-pagination ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--bbt-space-2);
+}
+
+.bbt-pagination a,
+.bbt-pagination span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 var(--bbt-space-3);
+    font-weight: 500;
+    color: var(--bbt-gray-600);
+    background: var(--bbt-white);
+    border: 1px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-md);
+    transition: all var(--bbt-transition-fast);
+}
+
+.bbt-pagination a:hover {
+    border-color: var(--bbt-primary);
+    color: var(--bbt-primary);
+}
+
+.bbt-pagination .current {
+    background: var(--bbt-primary);
+    border-color: var(--bbt-primary);
+    color: var(--bbt-white);
+}
+
+/* ========================================
+   No Results
+   ======================================== */
+.bbt-no-results {
+    grid-column: 1 / -1;
+    padding: var(--bbt-space-16) var(--bbt-space-8);
+    text-align: center;
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-xl);
+}
+
+.bbt-no-results h3 {
+    margin-bottom: var(--bbt-space-3);
+    color: var(--bbt-gray-600);
+}
+
+.bbt-no-results p {
+    color: var(--bbt-gray-500);
+}
+
+/* ========================================
+   List View (Alternative)
+   ======================================== */
+.bbt-tours-grid[data-view="list"] {
+    grid-template-columns: 1fr;
+}
+
+.bbt-tours-grid[data-view="list"] .bbt-tour-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.bbt-tours-grid[data-view="list"] .bbt-card-image {
+    aspect-ratio: auto;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .bbt-tours-grid[data-view="list"] .bbt-tour-card {
+        grid-template-columns: 1fr;
+    }
+}

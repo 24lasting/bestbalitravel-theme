@@ -1,0 +1,444 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Explore Bali the Right Way
+*/
+
+/* ==========================================================================
+   CSS Variables / Design Tokens
+   ========================================================================== */
+:root {
+    /* Primary Colors */
+    --bbt-primary: #F5A623;
+    --bbt-primary-dark: #E09000;
+    --bbt-primary-light: #FFD180;
+    
+    /* Secondary Colors */
+    --bbt-secondary: #2D3748;
+    --bbt-secondary-light: #4A5568;
+    
+    /* Accent Colors */
+    --bbt-success: #48BB78;
+    --bbt-warning: #ECC94B;
+    --bbt-error: #F56565;
+    --bbt-info: #4299E1;
+    
+    /* Neutral Colors */
+    --bbt-white: #FFFFFF;
+    --bbt-gray-50: #F7FAFC;
+    --bbt-gray-100: #EDF2F7;
+    --bbt-gray-200: #E2E8F0;
+    --bbt-gray-300: #CBD5E0;
+    --bbt-gray-400: #A0AEC0;
+    --bbt-gray-500: #718096;
+    --bbt-gray-600: #4A5568;
+    --bbt-gray-700: #2D3748;
+    --bbt-gray-800: #1A202C;
+    --bbt-gray-900: #171923;
+    --bbt-black: #000000;
+    
+    /* Typography */
+    --bbt-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --bbt-font-heading: 'Poppins', var(--bbt-font-primary);
+    
+    /* Font Sizes */
+    --bbt-text-xs: 0.75rem;
+    --bbt-text-sm: 0.875rem;
+    --bbt-text-base: 1rem;
+    --bbt-text-lg: 1.125rem;
+    --bbt-text-xl: 1.25rem;
+    --bbt-text-2xl: 1.5rem;
+    --bbt-text-3xl: 1.875rem;
+    --bbt-text-4xl: 2.25rem;
+    --bbt-text-5xl: 3rem;
+    
+    /* Spacing */
+    --bbt-space-1: 0.25rem;
+    --bbt-space-2: 0.5rem;
+    --bbt-space-3: 0.75rem;
+    --bbt-space-4: 1rem;
+    --bbt-space-5: 1.25rem;
+    --bbt-space-6: 1.5rem;
+    --bbt-space-8: 2rem;
+    --bbt-space-10: 2.5rem;
+    --bbt-space-12: 3rem;
+    --bbt-space-16: 4rem;
+    --bbt-space-20: 5rem;
+    
+    /* Border Radius */
+    --bbt-radius-sm: 0.25rem;
+    --bbt-radius-md: 0.5rem;
+    --bbt-radius-lg: 0.75rem;
+    --bbt-radius-xl: 1rem;
+    --bbt-radius-full: 9999px;
+    
+    /* Shadows */
+    --bbt-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --bbt-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --bbt-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --bbt-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --bbt-transition-fast: 150ms ease;
+    --bbt-transition-normal: 300ms ease;
+    --bbt-transition-slow: 500ms ease;
+    
+    /* Container */
+    --bbt-container-max: 1280px;
+    --bbt-container-padding: 1rem;
+}
+
+/* ==========================================================================
+   CSS Reset & Base
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--bbt-font-primary);
+    font-size: var(--bbt-text-base);
+    line-height: 1.6;
+    color: var(--bbt-gray-700);
+    background-color: var(--bbt-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--bbt-font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--bbt-gray-800);
+}
+
+h1 { font-size: var(--bbt-text-4xl); }
+h2 { font-size: var(--bbt-text-3xl); }
+h3 { font-size: var(--bbt-text-2xl); }
+h4 { font-size: var(--bbt-text-xl); }
+h5 { font-size: var(--bbt-text-lg); }
+h6 { font-size: var(--bbt-text-base); }
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.bbt-container {
+    width: 100%;
+    max-width: var(--bbt-container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--bbt-container-padding);
+    padding-right: var(--bbt-container-padding);
+}
+
+.bbt-section {
+    padding-top: var(--bbt-space-16);
+    padding-bottom: var(--bbt-space-16);
+}
+
+.bbt-grid {
+    display: grid;
+    gap: var(--bbt-space-6);
+}
+
+.bbt-flex {
+    display: flex;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.bbt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--bbt-space-2);
+    padding: var(--bbt-space-3) var(--bbt-space-6);
+    font-size: var(--bbt-text-base);
+    font-weight: 600;
+    border-radius: var(--bbt-radius-lg);
+    border: none;
+    cursor: pointer;
+    transition: all var(--bbt-transition-fast);
+    text-decoration: none;
+}
+
+.bbt-btn:focus {
+    outline: 2px solid var(--bbt-primary);
+    outline-offset: 2px;
+}
+
+.bbt-btn-primary {
+    background-color: var(--bbt-primary);
+    color: var(--bbt-white);
+}
+
+.bbt-btn-primary:hover {
+    background-color: var(--bbt-primary-dark);
+    transform: translateY(-1px);
+}
+
+.bbt-btn-secondary {
+    background-color: var(--bbt-secondary);
+    color: var(--bbt-white);
+}
+
+.bbt-btn-secondary:hover {
+    background-color: var(--bbt-secondary-light);
+}
+
+.bbt-btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--bbt-primary);
+    color: var(--bbt-primary);
+}
+
+.bbt-btn-outline:hover {
+    background-color: var(--bbt-primary);
+    color: var(--bbt-white);
+}
+
+.bbt-btn-lg {
+    padding: var(--bbt-space-4) var(--bbt-space-8);
+    font-size: var(--bbt-text-lg);
+}
+
+.bbt-btn-sm {
+    padding: var(--bbt-space-2) var(--bbt-space-4);
+    font-size: var(--bbt-text-sm);
+}
+
+.bbt-btn-block {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.bbt-card {
+    background-color: var(--bbt-white);
+    border-radius: var(--bbt-radius-xl);
+    box-shadow: var(--bbt-shadow-md);
+    overflow: hidden;
+    transition: all var(--bbt-transition-normal);
+}
+
+.bbt-card:hover {
+    box-shadow: var(--bbt-shadow-xl);
+    transform: translateY(-4px);
+}
+
+.bbt-card-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.bbt-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--bbt-transition-slow);
+}
+
+.bbt-card:hover .bbt-card-image img {
+    transform: scale(1.05);
+}
+
+.bbt-card-body {
+    padding: var(--bbt-space-5);
+}
+
+.bbt-card-title {
+    font-size: var(--bbt-text-lg);
+    font-weight: 600;
+    margin-bottom: var(--bbt-space-2);
+    color: var(--bbt-gray-800);
+}
+
+.bbt-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-4);
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+    margin-bottom: var(--bbt-space-3);
+}
+
+.bbt-card-price {
+    font-size: var(--bbt-text-xl);
+    font-weight: 700;
+    color: var(--bbt-primary);
+}
+
+.bbt-card-price span {
+    font-size: var(--bbt-text-sm);
+    font-weight: 400;
+    color: var(--bbt-gray-500);
+}
+
+/* ==========================================================================
+   Badges
+   ========================================================================== */
+.bbt-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--bbt-space-1) var(--bbt-space-3);
+    font-size: var(--bbt-text-xs);
+    font-weight: 600;
+    border-radius: var(--bbt-radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bbt-badge-primary {
+    background-color: var(--bbt-primary-light);
+    color: var(--bbt-primary-dark);
+}
+
+.bbt-badge-success {
+    background-color: #C6F6D5;
+    color: #22543D;
+}
+
+.bbt-badge-info {
+    background-color: #BEE3F8;
+    color: #2A4365;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.bbt-form-group {
+    margin-bottom: var(--bbt-space-4);
+}
+
+.bbt-form-label {
+    display: block;
+    margin-bottom: var(--bbt-space-2);
+    font-weight: 500;
+    color: var(--bbt-gray-700);
+}
+
+.bbt-form-input,
+.bbt-form-select,
+.bbt-form-textarea {
+    width: 100%;
+    padding: var(--bbt-space-3) var(--bbt-space-4);
+    font-size: var(--bbt-text-base);
+    border: 2px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-lg);
+    background-color: var(--bbt-white);
+    transition: all var(--bbt-transition-fast);
+}
+
+.bbt-form-input:focus,
+.bbt-form-select:focus,
+.bbt-form-textarea:focus {
+    outline: none;
+    border-color: var(--bbt-primary);
+    box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
+}
+
+/* ==========================================================================
+   Rating Stars
+   ========================================================================== */
+.bbt-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--bbt-space-1);
+}
+
+.bbt-rating-star {
+    color: var(--bbt-warning);
+}
+
+.bbt-rating-star.empty {
+    color: var(--bbt-gray-300);
+}
+
+.bbt-rating-count {
+    margin-left: var(--bbt-space-2);
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+}
+
+/* ==========================================================================
+   Responsive Utilities
+   ========================================================================== */
+@media (max-width: 767px) {
+    :root {
+        --bbt-text-4xl: 1.875rem;
+        --bbt-text-3xl: 1.5rem;
+        --bbt-text-2xl: 1.25rem;
+    }
+    
+    .bbt-section {
+        padding-top: var(--bbt-space-10);
+        padding-bottom: var(--bbt-space-10);
+    }
+    
+    .bbt-hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .bbt-hide-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .bbt-hide-desktop {
+        display: none !important;
+    }
+}

@@ -1,0 +1,28 @@
+name: Deploy Theme to Live Server
+
+on:
+  push:
+    branches:
+      - main  # Ganti ke 'master' jika branch utama Anda master
+
+jobs:
+  deploy:
+    name: Upload to Hosting
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Sync files to Server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Tentukan folder tujuan di hosting Anda (biasanya di wp-content/themes/nama-tema)
+          server-dir: public_html/wp-content/themes/bestbalitravel-theme/
+          # Kecualikan file yang tidak perlu di-upload (opsional, sudah di-handle .gitignore)
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

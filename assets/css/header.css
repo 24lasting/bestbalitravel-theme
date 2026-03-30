@@ -1,0 +1,506 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Header Styles
+*/
+
+/* ========================================
+   Header Base
+   ======================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--bbt-white);
+    box-shadow: var(--bbt-shadow-sm);
+    transition: all var(--bbt-transition-normal);
+}
+
+.site-header.scrolled {
+    box-shadow: var(--bbt-shadow-md);
+}
+
+.site-header.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-wrapper {
+    padding: var(--bbt-space-4) 0;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--bbt-space-6);
+}
+
+/* ========================================
+   Logo
+   ======================================== */
+.site-branding {
+    flex-shrink: 0;
+}
+
+.site-branding img {
+    height: 40px;
+    width: auto;
+}
+
+.site-logo-text {
+    display: flex;
+    align-items: center;
+    font-size: var(--bbt-text-xl);
+    font-weight: 700;
+    font-family: var(--bbt-font-heading);
+    text-decoration: none;
+}
+
+.logo-best {
+    color: var(--bbt-primary);
+}
+
+.logo-bali {
+    color: var(--bbt-secondary);
+}
+
+.logo-travel {
+    color: var(--bbt-gray-500);
+    font-weight: 400;
+    margin-left: var(--bbt-space-1);
+}
+
+/* ========================================
+   Navigation
+   ======================================== */
+.main-navigation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-1);
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    display: block;
+    padding: var(--bbt-space-2) var(--bbt-space-4);
+    font-weight: 500;
+    color: var(--bbt-gray-700);
+    border-radius: var(--bbt-radius-md);
+    transition: all var(--bbt-transition-fast);
+}
+
+.nav-menu a:hover,
+.nav-menu .current-menu-item>a {
+    color: var(--bbt-primary);
+    background: rgba(245, 166, 35, 0.1);
+}
+
+/* Dropdown */
+.nav-menu .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    padding: var(--bbt-space-2) 0;
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-lg);
+    box-shadow: var(--bbt-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--bbt-transition-fast);
+}
+
+.nav-menu li:hover>.sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-menu .sub-menu a {
+    padding: var(--bbt-space-2) var(--bbt-space-4);
+    border-radius: 0;
+}
+
+/* ========================================
+   Header Actions
+   ======================================== */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-3);
+}
+
+.header-search-toggle,
+.header-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--bbt-gray-600);
+    background: var(--bbt-gray-100);
+    border: none;
+    border-radius: var(--bbt-radius-full);
+    cursor: pointer;
+    transition: all var(--bbt-transition-fast);
+}
+
+.header-search-toggle:hover,
+.header-cart:hover {
+    color: var(--bbt-primary);
+    background: rgba(245, 166, 35, 0.1);
+}
+
+.header-cart {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: center;
+    color: var(--bbt-white);
+    background: var(--bbt-primary);
+    border-radius: var(--bbt-radius-full);
+}
+
+/* ========================================
+   Language & Currency Selectors
+   ======================================== */
+.language-selector,
+.currency-selector {
+    position: relative;
+}
+
+.lang-toggle,
+.currency-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-1);
+    padding: var(--bbt-space-2) var(--bbt-space-3);
+    font-size: var(--bbt-text-sm);
+    font-weight: 500;
+    color: var(--bbt-gray-600);
+    background: transparent;
+    border: 1px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-md);
+    cursor: pointer;
+    transition: all var(--bbt-transition-fast);
+}
+
+.lang-toggle:hover,
+.currency-toggle:hover {
+    border-color: var(--bbt-primary);
+    color: var(--bbt-primary);
+}
+
+.lang-dropdown,
+.currency-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 150px;
+    padding: var(--bbt-space-2) 0;
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-lg);
+    box-shadow: var(--bbt-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--bbt-transition-fast);
+    z-index: 100;
+}
+
+.language-selector.active .lang-dropdown,
+.currency-selector.active .currency-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-dropdown a,
+.currency-dropdown a {
+    display: block;
+    padding: var(--bbt-space-2) var(--bbt-space-4);
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-700);
+    transition: all var(--bbt-transition-fast);
+}
+
+.lang-dropdown a:hover,
+.currency-dropdown a:hover,
+.lang-dropdown a.active,
+.currency-dropdown a.active {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--bbt-primary);
+}
+
+/* ========================================
+   Mobile Menu Toggle
+   ======================================== */
+.mobile-menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+    margin: 0 auto;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--bbt-gray-700);
+    border-radius: 2px;
+    transition: all var(--bbt-transition-fast);
+}
+
+/* ========================================
+   Search Overlay
+   ======================================== */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: var(--bbt-space-6) 0;
+    background: var(--bbt-white);
+    box-shadow: var(--bbt-shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--bbt-transition-normal);
+    z-index: 1100;
+}
+
+.search-overlay.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-overlay .bbt-container {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-4);
+}
+
+.search-overlay .search-form {
+    flex: 1;
+    display: flex;
+    gap: var(--bbt-space-2);
+}
+
+.search-overlay .search-field {
+    flex: 1;
+    padding: var(--bbt-space-4);
+    font-size: var(--bbt-text-lg);
+    border: 2px solid var(--bbt-gray-200);
+    border-radius: var(--bbt-radius-lg);
+}
+
+.search-overlay .search-field:focus {
+    outline: none;
+    border-color: var(--bbt-primary);
+}
+
+.search-overlay .search-submit {
+    padding: var(--bbt-space-4);
+    background: var(--bbt-primary);
+    border: none;
+    border-radius: var(--bbt-radius-lg);
+    color: var(--bbt-white);
+    cursor: pointer;
+}
+
+.search-close {
+    padding: var(--bbt-space-2);
+    background: transparent;
+    border: none;
+    color: var(--bbt-gray-500);
+    cursor: pointer;
+}
+
+/* ========================================
+   Mobile Menu
+   ======================================== */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    background: var(--bbt-white);
+    box-shadow: var(--bbt-shadow-xl);
+    transform: translateX(100%);
+    transition: transform var(--bbt-transition-normal);
+    z-index: 1200;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--bbt-space-4);
+    border-bottom: 1px solid var(--bbt-gray-200);
+}
+
+.mobile-menu-close {
+    padding: var(--bbt-space-2);
+    background: transparent;
+    border: none;
+    color: var(--bbt-gray-600);
+    cursor: pointer;
+}
+
+.mobile-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--bbt-space-4);
+}
+
+.mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-menu a {
+    display: block;
+    padding: var(--bbt-space-3) 0;
+    font-size: var(--bbt-text-lg);
+    font-weight: 500;
+    color: var(--bbt-gray-700);
+    border-bottom: 1px solid var(--bbt-gray-100);
+}
+
+.mobile-nav-menu a:hover {
+    color: var(--bbt-primary);
+}
+
+.mobile-menu-footer {
+    padding: var(--bbt-space-4);
+    border-top: 1px solid var(--bbt-gray-200);
+}
+
+/* Body overlay when menu open */
+body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+}
+
+/* ========================================
+   WhatsApp Float Button
+   ======================================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: var(--bbt-white);
+    border-radius: var(--bbt-radius-full);
+    box-shadow: var(--bbt-shadow-lg);
+    transition: all var(--bbt-transition-fast);
+    z-index: 900;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 1024px) {
+    .main-navigation {
+        display: none;
+    }
+
+    .language-selector,
+    .currency-selector {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-wrapper {
+        padding: var(--bbt-space-3) 0;
+    }
+
+    .site-branding img {
+        height: 32px;
+    }
+
+    .site-logo-text {
+        font-size: var(--bbt-text-lg);
+    }
+
+    .whatsapp-float {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+}

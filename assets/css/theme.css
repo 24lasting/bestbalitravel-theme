@@ -1,0 +1,494 @@
+/*
+Theme Name: Best Bali Travel
+Theme URI: https://bestbalitravel.com
+Author: Best Bali Travel Team
+Author URI: https://bestbalitravel.com
+Description: A professional tour booking WordPress theme for Best Bali Travel. Features tour listings, booking system, multi-language support, and WooCommerce integration.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bestbalitravel
+Tags: tour-booking, travel, woocommerce, custom-menu, featured-images, translation-ready
+
+Best Bali Travel Theme - Theme Styles
+*/
+
+/* ========================================
+   Body Offset for Fixed Header
+   ======================================== */
+body {
+    padding-top: 72px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 64px;
+    }
+}
+
+/* ========================================
+   Page Header
+   ======================================== */
+.bbt-page-header {
+    padding: var(--bbt-space-10) 0;
+    background: linear-gradient(135deg, var(--bbt-gray-900) 0%, var(--bbt-gray-800) 100%);
+    color: var(--bbt-white);
+}
+
+.bbt-page-title {
+    font-size: var(--bbt-text-4xl);
+    margin-bottom: var(--bbt-space-4);
+}
+
+/* ========================================
+   Breadcrumbs
+   ======================================== */
+.bbt-breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--bbt-space-2);
+    font-size: var(--bbt-text-sm);
+}
+
+.bbt-breadcrumbs a {
+    color: var(--bbt-gray-400);
+    transition: color var(--bbt-transition-fast);
+}
+
+.bbt-breadcrumbs a:hover {
+    color: var(--bbt-primary);
+}
+
+.bbt-breadcrumb-sep {
+    color: var(--bbt-gray-500);
+}
+
+.bbt-breadcrumbs-bar {
+    padding: var(--bbt-space-4) 0;
+    background: var(--bbt-gray-50);
+    border-bottom: 1px solid var(--bbt-gray-200);
+}
+
+.bbt-breadcrumbs-bar .bbt-breadcrumbs a {
+    color: var(--bbt-gray-600);
+}
+
+/* ========================================
+   Section Styles
+   ======================================== */
+.bbt-section-header {
+    text-align: center;
+    margin-bottom: var(--bbt-space-12);
+}
+
+.bbt-section-header h2 {
+    margin-bottom: var(--bbt-space-3);
+}
+
+.bbt-section-header p {
+    font-size: var(--bbt-text-lg);
+    color: var(--bbt-gray-500);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.bbt-section-footer {
+    text-align: center;
+    margin-top: var(--bbt-space-10);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.bbt-hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bbt-gray-900) 0%, var(--bbt-secondary) 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+.bbt-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.bbt-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--bbt-white);
+    padding: var(--bbt-space-16) 0;
+}
+
+.bbt-hero-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: var(--bbt-space-4);
+    color: var(--bbt-white);
+}
+
+.bbt-hero-subtitle {
+    font-size: var(--bbt-text-xl);
+    margin-bottom: var(--bbt-space-10);
+    opacity: 0.9;
+}
+
+/* Hero Search */
+.bbt-hero-search {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bbt-search-form .bbt-search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: var(--bbt-space-4);
+    padding: var(--bbt-space-4);
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-xl);
+    box-shadow: var(--bbt-shadow-xl);
+}
+
+.bbt-search-field {
+    text-align: left;
+}
+
+.bbt-search-field label {
+    display: block;
+    font-size: var(--bbt-text-xs);
+    font-weight: 600;
+    color: var(--bbt-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--bbt-space-1);
+}
+
+.bbt-search-field .bbt-form-select,
+.bbt-search-field .bbt-form-input {
+    border: none;
+    background: var(--bbt-gray-50);
+    color: var(--bbt-gray-800);
+}
+
+@media (max-width: 768px) {
+    .bbt-hero {
+        min-height: auto;
+    }
+
+    .bbt-search-form .bbt-search-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Categories Section
+   ======================================== */
+.bbt-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--bbt-space-4);
+}
+
+.bbt-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--bbt-space-6);
+    background: var(--bbt-white);
+    border-radius: var(--bbt-radius-xl);
+    box-shadow: var(--bbt-shadow-sm);
+    text-align: center;
+    transition: all var(--bbt-transition-normal);
+}
+
+.bbt-category-card:hover {
+    box-shadow: var(--bbt-shadow-lg);
+    transform: translateY(-4px);
+}
+
+.bbt-category-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--bbt-space-4);
+}
+
+.bbt-category-card h3 {
+    font-size: var(--bbt-text-base);
+    margin-bottom: var(--bbt-space-1);
+}
+
+.bbt-category-card p {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+}
+
+@media (max-width: 1024px) {
+    .bbt-categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bbt-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   Locations Grid
+   ======================================== */
+.bbt-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--bbt-space-6);
+}
+
+.bbt-location-card {
+    position: relative;
+    display: block;
+    border-radius: var(--bbt-radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.bbt-location-image {
+    height: 100%;
+}
+
+.bbt-location-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--bbt-transition-slow);
+}
+
+.bbt-location-card:hover .bbt-location-image img {
+    transform: scale(1.1);
+}
+
+.bbt-location-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+}
+
+.bbt-location-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--bbt-space-5);
+    color: var(--bbt-white);
+}
+
+.bbt-location-name {
+    font-size: var(--bbt-text-lg);
+    margin-bottom: var(--bbt-space-1);
+    color: var(--bbt-white);
+}
+
+.bbt-location-count {
+    font-size: var(--bbt-text-sm);
+    opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+    .bbt-locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .bbt-locations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Tours Grid
+   ======================================== */
+.bbt-tours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--bbt-space-6);
+}
+
+.bbt-tours-grid.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .bbt-tours-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .bbt-tours-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Tour Card Enhancements
+   ======================================== */
+.bbt-tour-card .bbt-card-info {
+    display: flex;
+    gap: var(--bbt-space-4);
+    margin-bottom: var(--bbt-space-4);
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-500);
+}
+
+.bbt-tour-card .bbt-card-info span {
+    display: flex;
+    align-items: center;
+    gap: var(--bbt-space-1);
+}
+
+.bbt-tour-card .bbt-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--bbt-space-4);
+    border-top: 1px solid var(--bbt-gray-100);
+}
+
+.bbt-price-was {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-400);
+    text-decoration: line-through;
+    margin-right: var(--bbt-space-2);
+}
+
+.bbt-price-per {
+    font-size: var(--bbt-text-sm);
+    font-weight: 400;
+    color: var(--bbt-gray-500);
+}
+
+.bbt-badge-sale {
+    position: absolute;
+    top: var(--bbt-space-3);
+    left: var(--bbt-space-3);
+    background: var(--bbt-error);
+    color: var(--bbt-white);
+}
+
+/* ========================================
+   Why Section
+   ======================================== */
+.bbt-why-section {
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.1) 0%, rgba(245, 166, 35, 0.05) 100%);
+}
+
+.bbt-why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--bbt-space-8);
+}
+
+.bbt-why-card {
+    text-align: center;
+    padding: var(--bbt-space-6);
+}
+
+.bbt-why-icon {
+    font-size: 3rem;
+    margin-bottom: var(--bbt-space-4);
+}
+
+.bbt-why-card h3 {
+    font-size: var(--bbt-text-lg);
+    margin-bottom: var(--bbt-space-3);
+}
+
+.bbt-why-card p {
+    font-size: var(--bbt-text-sm);
+    color: var(--bbt-gray-600);
+}
+
+@media (max-width: 1024px) {
+    .bbt-why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .bbt-why-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Newsletter Section
+   ======================================== */
+.bbt-newsletter-section {
+    background: var(--bbt-primary);
+    color: var(--bbt-white);
+}
+
+.bbt-newsletter-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.bbt-newsletter-content h2 {
+    color: var(--bbt-white);
+    margin-bottom: var(--bbt-space-3);
+}
+
+.bbt-newsletter-content p {
+    margin-bottom: var(--bbt-space-6);
+    opacity: 0.9;
+}
+
+.bbt-newsletter-input {
+    display: flex;
+    gap: var(--bbt-space-3);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.bbt-newsletter-input input {
+    flex: 1;
+    padding: var(--bbt-space-4);
+    border: none;
+    border-radius: var(--bbt-radius-lg);
+    font-size: var(--bbt-text-base);
+}
+
+.bbt-newsletter-input .bbt-btn {
+    background: var(--bbt-secondary);
+}
+
+.bbt-newsletter-input .bbt-btn:hover {
+    background: var(--bbt-gray-800);
+}
+
+.bbt-newsletter-message {
+    margin-top: var(--bbt-space-4);
+}
+
+.bbt-newsletter-message .success {
+    color: #fff;
+}
+
+.bbt-newsletter-message .error {
+    color: #ffc3c3;
+}
+
+@media (max-width: 640px) {
+    .bbt-newsletter-input {
+        flex-direction: column;
+    }
+}
