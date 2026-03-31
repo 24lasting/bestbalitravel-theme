@@ -21,23 +21,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <?php wp_head(); ?>
-</head>
-
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-
-<div id="page" class="site">
-
-<?php
-// Check if Elementor Pro has a custom header template
-if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('header')) {
-    // Elementor header is displayed, skip theme header
-} else {
-    // Display default theme header
-?>
-
-    <div id="content" class="site-content">
-    
     <style>
     /* ============================================
        HEADER STYLES WITH ALPINE.JS SUPPORT
@@ -635,10 +618,25 @@ if (function_exists('elementor_theme_do_location') && elementor_theme_do_locatio
     </style>
 </head>
 
-<body <?php body_class(); ?>>
+<?php 
+$body_classes = array();
+if (is_front_page()) {
+    $body_classes[] = 'has-transparent-header';
+}
+?>
+<body <?php body_class($body_classes); ?>>
     <?php wp_body_open(); ?>
 
     <div id="page" class="site">
+
+    <?php
+    // Check if Elementor Pro has a custom header template
+    if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('header')) {
+        // Elementor header is displayed, skip theme header
+    } else {
+        // Display default theme header
+    ?>
+
         <a class="skip-link screen-reader-text" href="#main">
             <?php esc_html_e('Skip to content', 'bestbalitravel'); ?>
         </a>

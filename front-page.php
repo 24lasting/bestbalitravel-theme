@@ -35,81 +35,99 @@ else:
     $featured_count = get_theme_mod('bbt_featured_count', 6);
 ?>
 
-    <!-- Hero Section -->
-    <section class="bbt-hero" <?php if ($hero_bg): ?>style="background-image: url('
-        <?php echo esc_url(wp_get_attachment_image_url($hero_bg, 'full')); ?>');"
-        <?php endif; ?>>
-        <div class="bbt-hero-overlay"></div>
-        <div class="bbt-container">
-            <div class="bbt-hero-content">
-                <h1 class="bbt-hero-title">
+    <!-- Premium Apple/Airbnb Style Hero Section -->
+    <style>
+    /* Full Width & Animations */
+    .premium-hero-wrapper {
+        margin-left: calc(-50vw + 50%);
+        width: 100vw;
+    }
+    @keyframes kenburns {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.08); }
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    </style>
+    
+    <?php 
+    $hero_img = $hero_bg ? wp_get_attachment_image_url($hero_bg, 'full') : 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1920';
+    $locations = get_terms(array('taxonomy' => 'tour_location', 'hide_empty' => false));
+    $types = get_terms(array('taxonomy' => 'tour_type', 'hide_empty' => false));
+    ?>
+    
+    <section class="relative h-[85vh] min-h-[600px] max-h-[900px] overflow-hidden bg-black premium-hero-wrapper">
+        <!-- Background with Ken Burns -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($hero_img); ?>'); animation: kenburns 25s ease-in-out infinite alternate;"></div>
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/70"></div>
+        
+        <!-- Content Container -->
+        <div class="relative h-full flex flex-col items-center justify-center px-6 sm:px-10 lg:px-20 z-10 w-full max-w-7xl mx-auto">
+            
+            <div class="text-center w-full max-w-4xl mb-12" style="animation: fadeUp 1s ease-out forwards;">
+                <!-- Badge -->
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <span class="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-amber-500"></span>
+                    <span class="text-amber-400 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase">Best Bali Travel</span>
+                    <span class="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-amber-500"></span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6 drop-shadow-xl text-center">
                     <?php echo esc_html($hero_title); ?>
                 </h1>
-                <p class="bbt-hero-subtitle">
+                
+                <p class="text-lg sm:text-xl text-gray-200 font-light max-w-2xl mx-auto drop-shadow-md text-center">
                     <?php echo esc_html($hero_subtitle); ?>
                 </p>
-
-                <!-- Search Form -->
-                <div class="bbt-hero-search">
-                    <form class="bbt-search-form" action="<?php echo esc_url(home_url('/tours/')); ?>" method="get">
-                        <div class="bbt-search-grid">
-                            <div class="bbt-search-field">
-                                <label>
-                                    <?php esc_html_e('Destination', 'bestbalitravel'); ?>
-                                </label>
-                                <select name="location" class="bbt-form-select">
-                                    <option value="">
-                                        <?php esc_html_e('All Locations', 'bestbalitravel'); ?>
-                                    </option>
-                                    <?php
-                                    $locations = get_terms(array('taxonomy' => 'tour_location', 'hide_empty' => false));
-                                    foreach ($locations as $location):
-                                        ?>
-                                        <option value="<?php echo esc_attr($location->slug); ?>">
-                                            <?php echo esc_html($location->name); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-
-                            <div class="bbt-search-field">
-                                <label>
-                                    <?php esc_html_e('Tour Type', 'bestbalitravel'); ?>
-                                </label>
-                                <select name="type" class="bbt-form-select">
-                                    <option value="">
-                                        <?php esc_html_e('All Types', 'bestbalitravel'); ?>
-                                    </option>
-                                    <?php
-                                    $types = get_terms(array('taxonomy' => 'tour_type', 'hide_empty' => false));
-                                    foreach ($types as $type):
-                                        ?>
-                                        <option value="<?php echo esc_attr($type->slug); ?>">
-                                            <?php echo esc_html($type->name); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-
-                            <div class="bbt-search-field">
-                                <label>
-                                    <?php esc_html_e('Date', 'bestbalitravel'); ?>
-                                </label>
-                                <input type="text" name="date" class="bbt-form-input bbt-datepicker"
-                                    placeholder="<?php esc_attr_e('Select date', 'bestbalitravel'); ?>">
-                            </div>
-
-                            <button type="submit" class="bbt-btn bbt-btn-primary bbt-btn-lg">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="M21 21l-4.35-4.35"></path>
-                                </svg>
-                                <?php esc_html_e('Search', 'bestbalitravel'); ?>
-                            </button>
+            </div>
+            
+            <!-- Sleek Search Form -->
+            <div class="w-full max-w-5xl bg-white/10 backdrop-blur-md border border-white/20 p-2 lg:p-4 rounded-3xl shadow-2xl" style="animation: fadeUp 1.2s ease-out forwards;">
+                <form action="<?php echo esc_url(home_url('/tours/')); ?>" method="get" class="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-inner">
+                    <!-- Location -->
+                    <div class="flex-1 flex items-center px-6 py-5 border-b md:border-b-0 md:border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="w-full">
+                            <label class="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-1">Destination</label>
+                            <select name="location" class="w-full bg-transparent text-gray-500 focus:outline-none appearance-none font-medium cursor-pointer">
+                                <option value="">Where are you going?</option>
+                                <?php foreach ($locations as $loc): ?>
+                                    <option value="<?php echo esc_attr($loc->slug); ?>"><?php echo esc_html($loc->name); ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    
+                    <!-- Type -->
+                    <div class="flex-1 flex items-center px-6 py-5 border-b md:border-b-0 md:border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="w-full">
+                            <label class="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-1">Experience</label>
+                            <select name="type" class="w-full bg-transparent text-gray-500 focus:outline-none appearance-none font-medium cursor-pointer">
+                                <option value="">Select Tour Type</option>
+                                <?php foreach ($types as $type): ?>
+                                    <option value="<?php echo esc_attr($type->slug); ?>"><?php echo esc_html($type->name); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Date -->
+                    <div class="flex-1 flex items-center px-6 py-5 border-b md:border-b-0 md:border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="w-full">
+                            <label class="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-1">Date</label>
+                            <input type="text" name="date" class="w-full bg-transparent text-gray-500 focus:outline-none font-medium bbt-datepicker" placeholder="Any Date">
+                        </div>
+                    </div>
+                    
+                    <!-- Search Button -->
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-5 px-8 lg:px-12 flex items-center justify-center gap-3 transition-colors text-lg h-auto md:h-auto">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <span class="md:hidden lg:inline">Search</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
