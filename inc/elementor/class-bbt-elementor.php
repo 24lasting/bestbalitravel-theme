@@ -154,11 +154,12 @@ class BBT_Elementor
     {
         // Widget file => class name mapping (100 Widgets Total)
         $widgets = array(
-            // ===== CORE WIDGETS (14) =====
+            // ===== CORE WIDGETS (15) =====
             'hero-slider' => 'BBT_Widget_Hero_Slider',
             'tour-card' => 'BBT_Widget_Tour_Card',
             'tour-grid' => 'BBT_Widget_Tour_Grid',
             'tour-carousel' => 'BBT_Widget_Tour_Carousel',
+            'single-tour-mega' => 'BBT_Widget_Single_Tour_Mega',
             'booking' => 'BBT_Widget_Booking',
             'search-box' => 'BBT_Widget_Search_Box',
             'testimonials' => 'BBT_Widget_Testimonials',
