@@ -486,3 +486,15 @@ function bbt_theme_activation()
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'bbt_theme_activation');
+
+/**
+ * Prevent Elementor V2 Editor Notice Display
+ * Elementor 3.24.x often throws "WP_Scripts::add was called incorrectly" 
+ * for missing editor dependencies. This silently suppresses the notice to prevent breaking the editor UI.
+ */
+add_filter('doing_it_wrong_trigger_error', function($trigger, $function_name, $message) {
+    if (strpos($message, 'elementor-v2') !== false) {
+        return false;
+    }
+    return $trigger;
+}, 10, 3);
