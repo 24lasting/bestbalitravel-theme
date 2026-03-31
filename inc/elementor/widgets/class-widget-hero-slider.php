@@ -150,6 +150,12 @@ class BBT_Widget_Hero_Slider extends \Elementor\Widget_Base
 <!-- Dependencies -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+    // Dinamis menambahkan class transparant ke header saat widget ini dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.add('has-transparent-header');
+    });
+</script>
 
 <style>
 /* Full Width Override */
@@ -215,10 +221,10 @@ class BBT_Widget_Hero_Slider extends \Elementor\Widget_Base
     ?>
     <div 
         x-show="current === <?php echo $i; ?>"
-        x-transition:enter="transition ease-out duration-1000"
+        x-transition:enter="transition ease-in-out duration-[1500ms]"
         x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave="transition ease-in-out duration-1000"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
         class="absolute inset-0"

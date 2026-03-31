@@ -588,6 +588,50 @@ if (function_exists('elementor_theme_do_location') && elementor_theme_do_locatio
         width: 30px;
         height: 30px;
     }
+
+    /* Transparent Header Mode (Added by Hero Slider Widget) */
+    body.has-transparent-header {
+        padding-top: 0;
+    }
+    @media (max-width: 768px) {
+        body.has-transparent-header { padding-top: 0; }
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) {
+        background: transparent;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-nav-menu > li > a {
+        color: #ffffff;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-nav-menu > li > a:hover {
+        color: #f39c12;
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-logo {
+        color: #ffffff;
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-logo .logo-best,
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-logo .logo-bali,
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-logo .logo-travel {
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-header-btn,
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-selector-btn {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-header-btn:hover,
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-selector-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    body.has-transparent-header .bbt-header:not(.scrolled) .bbt-menu-toggle span {
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
     </style>
 </head>
 
